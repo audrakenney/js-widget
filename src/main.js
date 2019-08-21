@@ -15,17 +15,18 @@ function app(window) {
     };
 
     // all methods that were called till now and stored in queue
-    // needs to be called now 
+    // ** needs to be called now */
     let globalObject = window[window['JS-Widget']];
     let queue = globalObject.q;
     if (queue) {
         for (var i = 0; i < queue.length; i++) {
-            if (queue[i][0].toLowerCase() == 'init') {
+            if (queue[i][0].toLowerCase() === 'init') {
                 configurations = extendObject(configurations, queue[i][1]);
                 console.log('JS-Widget started', configurations);
             }
-            else
+            else {
                 apiHandler(queue[i][0], queue[i][1]);
+            }
         }
     }
 
@@ -47,7 +48,7 @@ function apiHandler(api, params) {
     console.log(`Handling API call ${api}`, params);
 
     switch (api) {
-        // TODO: add API implementation
+        // ** TODO: add API implementation */
         case 'message':
             show(params);
             break;
